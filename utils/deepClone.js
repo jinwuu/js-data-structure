@@ -1,7 +1,7 @@
 function deepClone(obj, hash = new WeakMap()) {
   if (obj instanceof RegExp) return new RegExp(obj)
   if (obj instanceof Date) return new Date(obj)
-  if (obj === null || typeof obj !== 'object') return obj
+  if (obj === null || !['object', 'function'].includes(typeof obj)) return obj
   if (hash.has(obj)) return hash.get(obj)
 
   const t = new obj.constructor()
